@@ -8,18 +8,20 @@ $(function() {
     // by typing data
     window.data = data;
 
-    temp=data.currently.apparentTemperature;
+    temp=data.currently.temperature;
     temp=Math.ceil(temp);
 
     var outlook="Outlook for the week: "+data.daily.summary;
-    var high="High: "+data.daily.data[0].apparentTemperatureMax;
-    var low="Low: "+data.daily.data[0].apparentTemperatureMin;
+    var high="High: "+data.daily.data[0].temperatureMax;
+    var low="Low: "+data.daily.data[0].temperatureMin;
 
     var today_pic="<h3>Rest of Today</h3>"+"<img src="+data.daily.data[0].icon+".jpg>"
     var tom_pic="<h3>Tomorrow</h3>"+"<img src="+data.daily.data[1].icon+".jpg>"  
     var dft_pic="<h3>Day After</h3>"+"<img src="+data.daily.data[2].icon+".jpg>"  
 
-
+    var today_temp = "Max Temp:"+data.daily.data[0].temperatureMax+"<br>"+"Min Temp:"+data.daily.data[0].temperatureMin
+    var tom_temp = "Max Temp:"+data.daily.data[1].temperatureMax+"<br>"+"Min Temp:"+data.daily.data[1].temperatureMin
+    var dft_temp = "Max Temp:"+data.daily.data[2].temperatureMax+"<br>"+"Min Temp:"+data.daily.data[2].temperatureMin
 
     //"<div class="container"><div style="left: 0px;" class="col-sm-4 text-left"><h1 class="loc">Chicago<br></h1><h2 class="current">Currently</h2></div>"
     
@@ -45,6 +47,9 @@ $(function() {
     $('.weather-report6').html(today_pic);
     $('.weather-report7').html(tom_pic);
     $('.weather-report8').html(dft_pic);
+    $('.weather-report6_a').html(today_temp);
+    $('.weather-report7_a').html(tom_temp);
+    $('.weather-report8_a').html(dft_temp);
   }
   $('a.get-the-weather').on('click', function(event) {
     event.preventDefault();
